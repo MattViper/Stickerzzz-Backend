@@ -1,8 +1,8 @@
-﻿using CleanArchitecture.Core.Entities;
-using CleanArchitecture.Core.Interfaces;
+﻿using Stickerzzz.Core.Entities;
+using Stickerzzz.Core.Interfaces;
 using System.Linq;
 
-namespace CleanArchitecture.Core
+namespace Stickerzzz.Core
 {
     public static class DatabasePopulator
     {

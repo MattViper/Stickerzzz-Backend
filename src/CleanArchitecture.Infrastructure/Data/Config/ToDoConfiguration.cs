@@ -1,8 +1,8 @@
-﻿using CleanArchitecture.Core.Entities;
+﻿using Stickerzzz.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CleanArchitecture.Infrastructure.Data.Config
+namespace Stickerzzz.Infrastructure.Data.Config
 {
     public class ToDoConfiguration : IEntityTypeConfiguration<ToDoItem>
     {

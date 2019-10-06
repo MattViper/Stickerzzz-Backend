@@ -1,6 +1,6 @@
-﻿using CleanArchitecture.Core.Entities;
+﻿using Stickerzzz.Core.Entities;
 
-namespace CleanArchitecture.UnitTests
+namespace Stickerzzz.UnitTests
 {
     // Learn more about test builders:
     // https://ardalis.com/improve-tests-with-the-builder-pattern-for-test-data

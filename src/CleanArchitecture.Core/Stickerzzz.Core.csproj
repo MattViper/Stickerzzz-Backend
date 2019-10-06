@@ -9,4 +9,8 @@
     <PackageReference Include="Ardalis.GuardClauses" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entities\" />
+  </ItemGroup>
+
 </Project>

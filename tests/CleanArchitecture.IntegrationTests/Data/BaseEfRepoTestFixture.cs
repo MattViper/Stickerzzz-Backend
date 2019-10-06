@@ -1,10 +1,10 @@
-﻿using CleanArchitecture.Core.Interfaces;
-using CleanArchitecture.Infrastructure.Data;
+﻿using Stickerzzz.Core.Interfaces;
+using Stickerzzz.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 
-namespace CleanArchitecture.IntegrationTests.Data
+namespace Stickerzzz.IntegrationTests.Data
 {
     public abstract class BaseEfRepoTestFixture
     {

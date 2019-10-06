@@ -1,4 +1,4 @@
-﻿using CleanArchitecture.Infrastructure;
+﻿using Stickerzzz.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -8,7 +8,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Reflection;
 
-namespace CleanArchitecture.Web
+namespace Stickerzzz.Web
 {
 	public class Startup
 	{

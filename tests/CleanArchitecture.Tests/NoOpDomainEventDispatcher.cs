@@ -1,7 +1,7 @@
-﻿using CleanArchitecture.Core.Interfaces;
-using CleanArchitecture.Core.SharedKernel;
+﻿using Stickerzzz.Core.Interfaces;
+using Stickerzzz.Core.SharedKernel;
 
-namespace CleanArchitecture.UnitTests
+namespace Stickerzzz.UnitTests
 {
     public class NoOpDomainEventDispatcher : IDomainEventDispatcher
     {

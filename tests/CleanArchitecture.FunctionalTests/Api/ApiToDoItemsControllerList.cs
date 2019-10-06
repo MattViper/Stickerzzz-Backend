@@ -1,5 +1,5 @@
-﻿using CleanArchitecture.Core.Entities;
-using CleanArchitecture.Web;
+﻿using Stickerzzz.Core.Entities;
+using Stickerzzz.Web;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace CleanArchitecture.FunctionalTests.Api
+namespace Stickerzzz.FunctionalTests.Api
 {
     public class ApiToDoItemsControllerList : IClassFixture<CustomWebApplicationFactory<Startup>>
     {

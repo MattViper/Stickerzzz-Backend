@@ -1,7 +1,7 @@
-﻿using CleanArchitecture.Core.Interfaces;
-using CleanArchitecture.Infrastructure.Data;
-using CleanArchitecture.UnitTests;
-using CleanArchitecture.Web;
+﻿using Stickerzzz.Core.Interfaces;
+using Stickerzzz.Infrastructure.Data;
+using Stickerzzz.UnitTests;
+using Stickerzzz.Web;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace CleanArchitecture.FunctionalTests
+namespace Stickerzzz.FunctionalTests
 {
     public class CustomWebApplicationFactory<TStartup> : WebApplicationFactory<Startup>
     {

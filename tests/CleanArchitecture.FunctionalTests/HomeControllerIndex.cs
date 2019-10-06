@@ -1,9 +1,9 @@
-﻿using CleanArchitecture.Web;
+﻿using Stickerzzz.Web;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace CleanArchitecture.FunctionalTests
+namespace Stickerzzz.FunctionalTests
 {
     public class HomeControllerIndex : IClassFixture<CustomWebApplicationFactory<Startup>>
     {

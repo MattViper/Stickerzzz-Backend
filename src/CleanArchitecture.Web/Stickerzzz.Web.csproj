@@ -17,7 +17,12 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\CleanArchitecture.Infrastructure\CleanArchitecture.Infrastructure.csproj" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\CleanArchitecture.Infrastructure\Stickerzzz.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

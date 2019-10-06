@@ -1,8 +1,8 @@
-﻿using CleanArchitecture.Infrastructure.Data;
+﻿using Stickerzzz.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CleanArchitecture.Infrastructure
+namespace Stickerzzz.Infrastructure
 {
 	public static class StartupSetup
 	{

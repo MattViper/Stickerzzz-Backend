@@ -1,9 +1,9 @@
-﻿using CleanArchitecture.Core.Entities;
-using CleanArchitecture.UnitTests;
+﻿using Stickerzzz.Core.Entities;
+using Stickerzzz.UnitTests;
 using System.Linq;
 using Xunit;
 
-namespace CleanArchitecture.IntegrationTests.Data
+namespace Stickerzzz.IntegrationTests.Data
 {
     public class EfRepositoryAdd : BaseEfRepoTestFixture
     {

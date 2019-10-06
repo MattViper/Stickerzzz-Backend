@@ -1,13 +1,13 @@
-﻿using CleanArchitecture.Core.Interfaces;
+﻿using Stickerzzz.Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using CleanArchitecture.Core.Entities;
-using CleanArchitecture.Core.SharedKernel;
+using Stickerzzz.Core.Entities;
+using Stickerzzz.Core.SharedKernel;
 using Ardalis.EFCore.Extensions;
 using System.Reflection;
 using JetBrains.Annotations;
 
-namespace CleanArchitecture.Infrastructure.Data
+namespace Stickerzzz.Infrastructure.Data
 {
     public class AppDbContext : DbContext
     {

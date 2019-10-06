@@ -1,9 +1,9 @@
-﻿using CleanArchitecture.Web;
+﻿using Stickerzzz.Web;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace CleanArchitecture.FunctionalTests.Api
+namespace Stickerzzz.FunctionalTests.Api
 {
     public class MetaControllerInfo : IClassFixture<CustomWebApplicationFactory<Startup>>
     {

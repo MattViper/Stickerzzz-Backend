@@ -1,11 +1,11 @@
-﻿using CleanArchitecture.Core.Entities;
-using CleanArchitecture.Infrastructure.Data;
+﻿using Stickerzzz.Core.Entities;
+using Stickerzzz.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 
-namespace CleanArchitecture.Web
+namespace Stickerzzz.Web
 {
     public static class SeedData
     {

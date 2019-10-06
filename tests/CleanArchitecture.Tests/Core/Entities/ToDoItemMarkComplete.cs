@@ -1,9 +1,9 @@
-﻿using CleanArchitecture.Core.Entities;
-using CleanArchitecture.Core.Events;
+﻿using Stickerzzz.Core.Entities;
+using Stickerzzz.Core.Events;
 using System.Linq;
 using Xunit;
 
-namespace CleanArchitecture.UnitTests.Core.Entities
+namespace Stickerzzz.UnitTests.Core.Entities
 {
     public class ToDoItemMarkComplete
     {

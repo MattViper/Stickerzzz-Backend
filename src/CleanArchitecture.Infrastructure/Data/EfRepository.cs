@@ -1,10 +1,10 @@
-﻿using CleanArchitecture.Core.Interfaces;
-using CleanArchitecture.Core.SharedKernel;
+﻿using Stickerzzz.Core.Interfaces;
+using Stickerzzz.Core.SharedKernel;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CleanArchitecture.Infrastructure.Data
+namespace Stickerzzz.Infrastructure.Data
 {
     public class EfRepository : IRepository
     {

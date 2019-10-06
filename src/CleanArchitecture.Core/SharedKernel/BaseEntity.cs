@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 
-namespace CleanArchitecture.Core.SharedKernel
+namespace Stickerzzz.Core.SharedKernel
 {
-    // This can be modified to BaseEntity<TId> to support multiple key types (e.g. Guid)
-    public abstract class BaseEntity
+    public abstract class BaseEntity<TId>
     {
-        public int Id { get; set; }
+        public TId Id { get; set; }
 
-        public List<BaseDomainEvent> Events = new List<BaseDomainEvent>();
+        
     }
 }
