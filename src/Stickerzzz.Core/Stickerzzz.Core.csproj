@@ -4,11 +4,6 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Ardalis.GuardClauses" />
-  </ItemGroup>
-
   <ItemGroup>
     <Folder Include="Entities\" />
   </ItemGroup>
