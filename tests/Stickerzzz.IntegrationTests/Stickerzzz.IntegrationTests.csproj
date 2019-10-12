@@ -6,6 +6,7 @@
     <TestProjectMode>true</TestProjectMode>
   </PropertyGroup>
 
+
   <ItemGroup>
     <ProjectReference Include="..\Stickerzzz.Tests\Stickerzzz.UnitTests.csproj" />
   </ItemGroup>
