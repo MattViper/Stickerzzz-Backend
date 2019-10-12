@@ -9,11 +9,14 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
     <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
+    <Authors>Mateusz Żmijewski</Authors>
+    <Product>Stickerzzz</Product>
+    <Company>Stickerzzz</Company>
+    <Copyright>Copyright © Mateusz Żmijewski 2019</Copyright>
   </PropertyGroup>
   
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" />
     <PackageReference Include="Swashbuckle.AspNetCore" />
@@ -26,7 +29,8 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\CleanArchitecture.Infrastructure\Stickerzzz.Infrastructure.csproj" />
+    <ProjectReference Include="..\Stickerzzz.Core\Stickerzzz.Core.csproj" />
+    <ProjectReference Include="..\Stickerzzz.Infrastructure\Stickerzzz.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

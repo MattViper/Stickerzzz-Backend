@@ -15,20 +15,14 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "CleanArchitecture.Web": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:57679/"
-    },
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
-      "environmentVariables": {},
       "httpPort": 57679
+    },
+    "Stickerzzz.Web": {
+      "commandName": "Project"
     }
   }
 }

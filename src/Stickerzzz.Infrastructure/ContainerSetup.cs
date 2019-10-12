@@ -21,7 +21,7 @@ namespace Stickerzzz.Infrastructure
 		{
 			var builder = new ContainerBuilder();
 
-			var coreAssembly = Assembly.GetAssembly(typeof(BaseEntity));
+			var coreAssembly = Assembly.GetAssembly(typeof(BaseEntity<int>));
 			var infrastructureAssembly = Assembly.GetAssembly(typeof(EfRepository));
 			builder.RegisterAssemblyTypes(coreAssembly, infrastructureAssembly).AsImplementedInterfaces();
 

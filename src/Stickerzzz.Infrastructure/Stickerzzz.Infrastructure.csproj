@@ -12,12 +12,11 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" PrivateAssets="all" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
-    <PackageReference Include="Npgsql" Version="4.1.1" />
     <PackageReference Include="SQLite" />
     <PackageReference Include="NETStandard.Library" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CleanArchitecture.Core\Stickerzzz.Core.csproj" />
+    <ProjectReference Include="..\Stickerzzz.Core\Stickerzzz.Core.csproj" />
   </ItemGroup>
 </Project>

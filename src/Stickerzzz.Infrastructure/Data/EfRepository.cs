@@ -1,7 +1,7 @@
-﻿using Stickerzzz.Core.Interfaces;
+﻿using System.Collections.Generic;
+using Stickerzzz.Core.Interfaces;
 using Stickerzzz.Core.SharedKernel;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Stickerzzz.Infrastructure.Data
@@ -15,17 +15,17 @@ namespace Stickerzzz.Infrastructure.Data
             _dbContext = dbContext;
         }
 
-        public T GetById<T>(int id) where T : BaseEntity
+        public T GetById<T>(T id) where T : BaseEntity<T>
         {
             return _dbContext.Set<T>().SingleOrDefault(e => e.Id == id);
         }
 
-        public List<T> List<T>() where T : BaseEntity
+        public List<T> List<T>() where T : BaseEntity<T>
         {
             return _dbContext.Set<T>().ToList();
         }
 
-        public T Add<T>(T entity) where T : BaseEntity
+        public T Add<T>(T entity) where T : BaseEntity<T>
         {
             _dbContext.Set<T>().Add(entity);
             _dbContext.SaveChanges();
@@ -33,13 +33,13 @@ namespace Stickerzzz.Infrastructure.Data
             return entity;
         }
 
-        public void Delete<T>(T entity) where T : BaseEntity
+        public void Delete<T>(T entity) where T : BaseEntity<T>
         {
             _dbContext.Set<T>().Remove(entity);
             _dbContext.SaveChanges();
         }
 
-        public void Update<T>(T entity) where T : BaseEntity
+        public void Update<T>(T entity) where T : BaseEntity<T>
         {
             _dbContext.Entry(entity).State = EntityState.Modified;
             _dbContext.SaveChanges();

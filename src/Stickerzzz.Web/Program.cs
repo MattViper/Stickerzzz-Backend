@@ -23,7 +23,7 @@ namespace Stickerzzz.Web
                     var context = services.GetRequiredService<AppDbContext>();
 //                    context.Database.Migrate();
                     context.Database.EnsureCreated();
-                    SeedData.Initialize(services);
+                    
                 }
                 catch (Exception ex)
                 {
