@@ -13,8 +13,7 @@ install:
 
 script:
  - dotnet restore
- - dotnet build **/project.json
- - dotnet build src/Stickerzzz.Web/ 
+ - dotnet build
  - dotnet test tests/Stickerzzz.Tests/
  - dotnet test tests/Stickerzzz.FunctionalTests/
  - dotnet test tests/Stickerzzz.IntegrationTests/
