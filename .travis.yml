@@ -12,7 +12,7 @@ install:
   - sudo apt-get install -qq dotnet-sdk-2.0.0
 
 script:
- - dotnet restore
+ - dotnet restore Stickerzzz.sln
  - dotnet build src/Stickerzzz.Core/
  - dotnet build src/Stickerzzz.Infrastructure/ 
  - dotnet build src/Stickerzzz.Web/
