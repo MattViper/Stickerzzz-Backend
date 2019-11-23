@@ -12,6 +12,7 @@ install:
   - sudo apt-get install -qq dotnet-sdk-2.0.0
 
 before_script:
+ - cd Stickerzzz-Backend
  - dotnet restore
 
 script:
