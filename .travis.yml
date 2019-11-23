@@ -1,0 +1,21 @@
+language: csharp
+solution: Stickerzzz.sln
+sudo: required
+dist: xenial
+mono: none
+dotnet: 3.0.100
+branches:
+ - only:
+   - develop-posts
+
+install:
+  - sudo apt-get install -qq dotnet-sdk-2.0.0
+
+script:
+ - dotnet restore
+ - dotnet build src/Stickerzzz.Core/
+ - dotnet build src/Stickerzzz.Infrastructure/ 
+ - dotnet build src/Stickerzzz.Web/
+ - dotnet test tests/Stickerzzz.Tests/
+ - dotnet test tests/Stickerzzz.FunctionalTests/
+ - dotnet test tests/Stickerzzz.IntegrationTests/
