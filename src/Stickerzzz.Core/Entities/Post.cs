@@ -11,9 +11,10 @@ namespace Stickerzzz.Core.Entities
 {
     public class Post : BaseEntityWithUser<int, AppUser>
     {
-        public ICollection<Sticker> Stickers { get; set; }
+        public string Slug { get; set; }
         public string Content { get; set; }
         public int Hearts { get; set; }
+        public ICollection<Sticker> Stickers { get; set; }
         public ICollection<Comment> Comments { get; set; }
         public ICollection<PostStickers> PostStickers { get; set; }
 

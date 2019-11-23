@@ -8,12 +8,11 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Reflection;
 using AutoMapper;
-using Stickerzzz.Web.Helpers;
-using Stickerzzz.Web.Services.Interfaces;
-using Stickerzzz.Web.Services;
 using FluentValidation.WebApi;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
+using Stickerzzz.Infrastructure.Data;
+using MediatR;
 
 namespace Stickerzzz.Web
 {
@@ -32,13 +31,13 @@ namespace Stickerzzz.Web
 			});
 
 			services.AddDbContext();
-            var mappingConfig = new MapperConfiguration(mc =>
-            {
-                mc.AddProfile(new MappingProfile());
-            });
+            //var mappingConfig = new MapperConfiguration(mc =>
+            //{
+            //    mc.AddProfile(new MappingProfile());
+            //});
 
-            IMapper mapper = mappingConfig.CreateMapper();
-            services.AddSingleton(mapper);
+            //IMapper mapper = mappingConfig.CreateMapper();
+            //services.AddSingleton(mapper);
 
 			services.AddControllersWithViews().AddNewtonsoftJson().AddFluentValidation(fv =>
             {
@@ -50,7 +49,12 @@ namespace Stickerzzz.Web
 
 			services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "Stickerzzz API", Version = "v1" }));
 
-            //services.AddScoped<IPostsService, PostsService>();
+			//services.AddScoped<IPostsService, PostsService>();
+			services.AddScoped<ICurrentUserAccessor, CurrentUserAccessor>();
+			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+			services.AddMediatR(Assembly.GetExecutingAssembly());
+			services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
+			services.AddScoped(typeof(IPipelineBehavior<,>), typeof(DBContextTransactionPipelineBehavior<,>));
 
 			return ContainerSetup.InitializeWeb(Assembly.GetExecutingAssembly(), services);
 		}
@@ -76,7 +80,11 @@ namespace Stickerzzz.Web
 			app.UseSwagger();
 
 			// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
-			app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Stickerzzz API V1"));
+			app.UseSwaggerUI(c =>
+			{
+				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Stickerzzz API V1");
+				c.RoutePrefix = string.Empty;
+			});
 
 			app.UseEndpoints(endpoints =>
 			{

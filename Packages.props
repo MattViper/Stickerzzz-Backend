@@ -37,6 +37,10 @@
     <PackageReference Update="FluentValidation.DependencyInjectionExtensions" Version="8.5.1" />
     <PackageReference Update="FluentValidation.WebApi" Version="8.5.1" />
     <PackageReference Update="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
+    <PackageReference Update="Microsoft.Extensions.Localization.Abstractions" Version="3.0.1" />
+    <PackageReference Update="FluentValidation.AspNetCore" Version="8.5.1" />
+
+
 
 
 
