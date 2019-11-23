@@ -46,11 +46,11 @@ namespace Stickerzzz.Web
             });
 			services.AddRazorPages();
 
-			//ApiBehaviorOptions ModelState Middleware
+			//ModelState Validation Middleware
 
 			services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "Stickerzzz API", Version = "v1" }));
 
-            services.AddScoped<IPostsService, PostsService>();
+            //services.AddScoped<IPostsService, PostsService>();
 
 			return ContainerSetup.InitializeWeb(Assembly.GetExecutingAssembly(), services);
 		}
