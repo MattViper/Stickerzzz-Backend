@@ -8,8 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Stickerzzz.Core.Users;
-using Stickerzzz.Web.Responses.Factories;
-using Stickerzzz.Web.Services.ServiceResponses;
+using Stickerzzz.Web.Services
 
 namespace Stickerzzz.Web.Controllers
 {
