@@ -8,14 +8,10 @@ branches:
    - develop-posts
 
 install:
-install:
   - sudo apt-get install -qq dotnet-sdk-2.0.0
 
-before_script:
- - cd Stickerzzz-Backend
- - dotnet restore
-
 script:
+ - dotnet restore
  - dotnet build src/Stickerzzz.Web/ 
  - dotnet test tests/Sickerzzz.Tests/
  - dotnet test tests/Sickerzzz.FunctionalTests/
