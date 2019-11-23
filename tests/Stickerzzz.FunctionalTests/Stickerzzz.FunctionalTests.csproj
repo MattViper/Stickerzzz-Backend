@@ -5,6 +5,11 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <TestProjectMode>true</TestProjectMode>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Stickerzzz.Tests\Stickerzzz.UnitTests.csproj" />

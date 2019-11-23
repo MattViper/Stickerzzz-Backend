@@ -21,8 +21,8 @@ namespace Stickerzzz.Web
                 try
                 {
                     var context = services.GetRequiredService<AppDbContext>();
-//                    context.Database.Migrate();
-                    context.Database.EnsureCreated();
+                    context.Database.Migrate();
+                    //context.Database.EnsureCreated();
                     
                 }
                 catch (Exception ex)

@@ -8,8 +8,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Stickerzzz.Core.Users;
-using Stickerzzz.Web.Responses.Factories;
-using Stickerzzz.Web.Services.ServiceResponses;
 
 namespace Stickerzzz.Web.Controllers
 {
@@ -20,7 +18,6 @@ namespace Stickerzzz.Web.Controllers
     public class BaseController : ControllerBase
     {
         protected readonly ILoggerFactory loggerFactory = null;
-
         public BaseController(
             ILoggerFactory loggerFactory
         )
@@ -28,6 +25,5 @@ namespace Stickerzzz.Web.Controllers
         {
             this.loggerFactory = loggerFactory;
         }
-
     }
 }
