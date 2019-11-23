@@ -15,6 +15,6 @@ script:
  - dotnet restore
  - dotnet build **/project.json
  - dotnet build src/Stickerzzz.Web/ 
- - dotnet test tests/Sickerzzz.Tests/
- - dotnet test tests/Sickerzzz.FunctionalTests/
- - dotnet test tests/Sickerzzz.IntegrationTests/
+ - dotnet test tests/Stickerzzz.Tests/
+ - dotnet test tests/Stickerzzz.FunctionalTests/
+ - dotnet test tests/Stickerzzz.IntegrationTests/
