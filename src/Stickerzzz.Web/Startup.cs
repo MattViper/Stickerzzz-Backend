@@ -13,6 +13,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Stickerzzz.Infrastructure.Data;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace Stickerzzz.Web
 {
@@ -31,14 +32,14 @@ namespace Stickerzzz.Web
 			});
 
 			services.AddDbContext();
-            //var mappingConfig = new MapperConfiguration(mc =>
-            //{
-            //    mc.AddProfile(new MappingProfile());
-            //});
+			//var mappingConfig = new MapperConfiguration(mc =>
+			//{
+			//    mc.AddProfile(new MappingProfile());
+			//});
 
-            //IMapper mapper = mappingConfig.CreateMapper();
-            //services.AddSingleton(mapper);
-
+			//IMapper mapper = mappingConfig.CreateMapper();
+			//services.AddSingleton(mapper);
+			services.AddCors();
 			services.AddControllersWithViews().AddNewtonsoftJson().AddFluentValidation(fv =>
             {
                 fv.ImplicitlyValidateChildProperties = true;
@@ -55,12 +56,15 @@ namespace Stickerzzz.Web
 			services.AddMediatR(Assembly.GetExecutingAssembly());
 			services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
 			services.AddScoped(typeof(IPipelineBehavior<,>), typeof(DBContextTransactionPipelineBehavior<,>));
-
+			services.AddJwt();
 			return ContainerSetup.InitializeWeb(Assembly.GetExecutingAssembly(), services);
 		}
 
-		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
 		{
+
+			loggerFactory.AddSerilogLogging();
+
 			if (env.EnvironmentName == "Development")
 			{
 				app.UseDeveloperExceptionPage();
@@ -70,8 +74,15 @@ namespace Stickerzzz.Web
 				app.UseExceptionHandler("/Home/Error");
 				app.UseHsts();
 			}
-			app.UseRouting();
 
+			app.UseCors(builder =>
+				builder
+					.AllowAnyOrigin()
+					.AllowAnyHeader()
+					.AllowAnyMethod());
+
+			app.UseRouting();
+			app.UseAuthorization();
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 			app.UseCookiePolicy();
