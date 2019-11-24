@@ -11,6 +11,7 @@ namespace Stickerzzz.Core.Entities
 {
     public class Post : BaseEntityWithUser<int, AppUser>
     {
+        public string Title { get; set; }
         public string Slug { get; set; }
         public string Content { get; set; }
         public int Hearts { get; set; }

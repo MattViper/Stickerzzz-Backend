@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Stickerzzz.Infrastructure.Security;
 
 namespace Stickerzzz.Web.Posts
 {
@@ -30,6 +32,12 @@ namespace Stickerzzz.Web.Posts
         [HttpGet("{slug}")]
         public async Task<PostEnvelope> Get(string slug)
             => await _mediator.Send(new Details.Query(slug));
+
+
+        [HttpPost]
+        [Authorize(AuthenticationSchemes = JwtIssuerOptions.Schemes)]
+        public async Task<PostEnvelope> Create([FromBody]Create.Command command)
+            => await _mediator.Send(command);
 
     }
 }
