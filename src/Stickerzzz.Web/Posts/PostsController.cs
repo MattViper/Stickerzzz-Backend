@@ -39,8 +39,16 @@ namespace Stickerzzz.Web.Posts
         public async Task<PostEnvelope> Create([FromBody]Create.Command command)
             => await _mediator.Send(command);
 
+        [HttpPut("{slug}")]
+        [Authorize(AuthenticationSchemes =JwtIssuerOptions.Schemes)]
+        public async Task<PostEnvelope> Edit(string slug, [FromBody] Edit.Command command)
+        {
+            command.Slug = slug;
+            return await _mediator.Send(command);
+        }
+
         [HttpDelete("{slug}")]
         //[Authorize(AuthenticationSchemes = JwtIssuerOptions.Schemes)]
-        public async Task Delete(string slug) => await _mediator.Send(new Delete.Command(slug));
+        public async Task Delete(string slug) => await _mediator.Send(new Delete.Command(slug));    
     }
 }
