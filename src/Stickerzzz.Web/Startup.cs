@@ -49,7 +49,10 @@ namespace Stickerzzz.Web
 			//ModelState Validation Middleware
 
 			services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "Stickerzzz API", Version = "v1" }));
-
+			services.ConfigureSwaggerGen(options =>
+   			{
+       				options.CustomSchemaIds(x => x.FullName);
+   			});
 			//services.AddScoped<IPostsService, PostsService>();
 			services.AddScoped<ICurrentUserAccessor, CurrentUserAccessor>();
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
