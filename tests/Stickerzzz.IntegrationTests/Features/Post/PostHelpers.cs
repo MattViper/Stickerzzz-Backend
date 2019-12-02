@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Stickerzzz.Core.Entities;
-using Stickerzzz.Web.Posts.Create;
+using Stickerzzz.Web.Posts;
 
 namespace Stickerzzz.IntegrationTests.Features.Post
 {
