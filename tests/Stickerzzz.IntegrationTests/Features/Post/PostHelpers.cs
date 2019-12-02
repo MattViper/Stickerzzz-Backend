@@ -1,7 +1,8 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Stickerzzz.Web.Posts;
+using Stickerzzz.Core.Entities;
+
 
 namespace Stickerzzz.IntegrationTests.Features.Post
 {
@@ -41,7 +42,7 @@ namespace Stickerzzz.IntegrationTests.Features.Post
 
 
 
-            var dbArticle = await fixture.ExecuteDbContextAsync(db => db.Articles.Where(a => a.ArticleId == created.Article.ArticleId)
+            var dbArticle = await fixture.ExecuteDbContextAsync(db => db.Posts.Where(a => a.Id == created.Post.Id)
 
                 .SingleOrDefaultAsync());
 
