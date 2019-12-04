@@ -10,16 +10,12 @@ using Stickerzzz.Web;
 
 namespace Stickerzzz.IntegrationTests
 {
-    class SliceFixture
+    public class SliceFixture : IDisposable
     {
         static readonly IConfiguration Config;
 
-
-
         private readonly IServiceScopeFactory _scopeFactory;
-
         private readonly ServiceProvider _provider;
-
         private readonly string DbName = Guid.NewGuid() + ".db";
 
 
@@ -29,11 +25,8 @@ namespace Stickerzzz.IntegrationTests
         {
 
             Config = new ConfigurationBuilder()
-
                .AddEnvironmentVariables()
-
                .Build();
-
         }
 
 
@@ -41,69 +34,36 @@ namespace Stickerzzz.IntegrationTests
         public SliceFixture()
 
         {
-
             var startup = new Startup(Config);
-
             var services = new ServiceCollection();
 
-
-
             DbContextOptionsBuilder builder = new DbContextOptionsBuilder();
-
             builder.UseInMemoryDatabase(DbName);
-
             services.AddSingleton(new AppDbContext(builder.Options));
-
-
 
             startup.ConfigureServices(services);
 
-
-
             _provider = services.BuildServiceProvider();
 
-
-
             GetDbContext().Database.EnsureCreated();
-
             _scopeFactory = _provider.GetService<IServiceScopeFactory>();
 
         }
 
 
 
-        public AppDbContext GetDbContext()
+        public AppDbContext GetDbContext() => _provider.GetRequiredService<AppDbContext>();
+        public void Dispose() => File.Delete(DbName);
 
-        {
-
-            return _provider.GetRequiredService<AppDbContext>();
-
-        }
-
-
-
-        public void Dispose()
-
-        {
-
-            File.Delete(DbName);
-
-        }
 
 
 
         public async Task ExecuteScopeAsync(Func<IServiceProvider, Task> action)
-
         {
-
             using (var scope = _scopeFactory.CreateScope())
-
             {
-
                 await action(scope.ServiceProvider);
-
             }
-
         }
 
 
