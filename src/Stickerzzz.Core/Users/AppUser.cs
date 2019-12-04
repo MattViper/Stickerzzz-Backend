@@ -9,6 +9,9 @@ namespace Stickerzzz.Core.Users
     public class AppUser : IdentityUser<Guid>
     {
         public string Avatar { get; set; }
+        public string Bio { get; set; }
+        public byte[] Hash { get; set; }
+        public byte[] Salt { get; set; }
 
         public ICollection<Post> Posts { get; set; }
         public ICollection<Sticker> Stickers { get; set; }
