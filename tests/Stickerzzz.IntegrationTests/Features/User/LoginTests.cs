@@ -15,8 +15,8 @@ namespace Stickerzzz.IntegrationTests.Features.User
             var salt = Guid.NewGuid().ToByteArray();
             var person = new AppUser
             {
-                UserName = "username",
-                Email = "email",
+                UserName = "mv3",
+                Email = "mv3@gmail.com",
                 Hash = new PasswordHasher().Hash("password", salt),
                 Salt = salt
             };
@@ -26,7 +26,7 @@ namespace Stickerzzz.IntegrationTests.Features.User
             {
                 User = new Login.UserData()
                 {
-                    Email = "email",
+                    Email = "mv3@gmail.com",
                     Password = "password"
                 }
             };
@@ -35,7 +35,7 @@ namespace Stickerzzz.IntegrationTests.Features.User
 
             Assert.NotNull(user?.User);
             Assert.Equal(user.User.Email, command.User.Email);
-            Assert.Equal("username", user.User.Username);
+            Assert.Equal("mv3", user.User.Username);
             Assert.NotNull(user.User.Token);
         }
     }

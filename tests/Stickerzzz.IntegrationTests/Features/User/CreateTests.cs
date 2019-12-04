@@ -19,9 +19,9 @@ namespace Stickerzzz.IntegrationTests.Features.User
             {
                 User = new Create.UserData()
                 {
-                    Email = "email",
+                    Email = "mv2@gmail.com",
                     Password = "password",
-                    UserName = "username"
+                    UserName = "mv2"
                 }
             };
 
