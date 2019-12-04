@@ -20,7 +20,7 @@ namespace Stickerzzz.Web
         {
             services.AddOptions();
 
-            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("somethinglongerforthisdumbalgorithmisrequired"));
+            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("KarolJaskotTheVaadinGuruMasterOfJava"));
             var signingCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
             var issuer = "issuer";
             var audience = "audience";
@@ -49,6 +49,8 @@ namespace Stickerzzz.Web
                 ClockSkew = TimeSpan.Zero
             };
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddFacebook()
+                .AddGoogle() //complete
                 .AddJwtBearer(options =>
                 {
                     options.TokenValidationParameters = tokenValidationParameters;

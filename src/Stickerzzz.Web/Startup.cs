@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Stickerzzz.Infrastructure.Data;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Stickerzzz.Infrastructure.Errors;
 
 namespace Stickerzzz.Web
 {
@@ -46,8 +47,7 @@ namespace Stickerzzz.Web
             });
 			services.AddRazorPages();
 
-			//ModelState Validation Middleware
-
+			services.AddLocalization(x => x.ResourcesPath = "Resources");
 			services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "Stickerzzz API", Version = "v1" }));
 			services.ConfigureSwaggerGen(options =>
    			{
@@ -78,6 +78,8 @@ namespace Stickerzzz.Web
 				app.UseHsts();
 			}
 
+			app.UseMiddleware<ErrorHandlingMiddleware>();
+
 			app.UseCors(builder =>
 				builder
 					.AllowAnyOrigin()
@@ -85,7 +87,7 @@ namespace Stickerzzz.Web
 					.AllowAnyMethod());
 
 			app.UseRouting();
-			app.UseAuthorization();
+			//app.UseAuthorization();
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 			app.UseCookiePolicy();

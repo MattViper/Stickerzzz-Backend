@@ -13,9 +13,9 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\Stickerzzz.Src\Stickerzzz.Core.csproj" />
-    <ProjectReference Include="..\Stickerzzz.Src\Stickerzzz.Infrastructure.csproj" />
-    <ProjectReference Include="..\Stickerzzz.Src\Stickerzzz.Web.csproj" />
+    <ProjectReference Include="..\..\src\Stickerzzz.Core\Stickerzzz.Core.csproj" />
+    <ProjectReference Include="..\..\src\Stickerzzz.Infrastructure\Stickerzzz.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\Stickerzzz.Web\Stickerzzz.Web.csproj" />
     <ProjectReference Include="..\Stickerzzz.Tests\Stickerzzz.UnitTests.csproj" />
   </ItemGroup>
 

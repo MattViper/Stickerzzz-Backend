@@ -1,54 +1,54 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Stickerzzz.Core.Entities;
-using Stickerzzz.Web.Posts;
+﻿//using System.Linq;
+//using System.Threading.Tasks;
+//using Microsoft.EntityFrameworkCore;
+//using Stickerzzz.Core.Entities;
+//using Stickerzzz.Web.Posts;
 
-namespace Stickerzzz.IntegrationTests.Features.Post
-{
-    class PostHelpers
-    {
-        /// <summary>
+//namespace Stickerzzz.IntegrationTests.Features.Post
+//{
+//    class PostHelpers
+//    {
+//        / <summary>
 
-        /// creates an article based on the given Create command. It also creates a default user
+//        / creates an article based on the given Create command.It also creates a default user
 
-        /// </summary>
+//        / </summary>
 
-        /// <param name="fixture"></param>
+//        / <param name = "fixture" ></ param >
 
-        /// <param name="command"></param>
+//        / < param name="command"></param>
 
-        /// <returns></returns>
+//        / <returns></returns>
 
-        public static async Task<Stickerzzz.Core.Entities.Post> CreateArticle(SliceFixture fixture, Create.Command command)
+//        public static async Task<Stickerzzz.Core.Entities.Post> CreateArticle(SliceFixture fixture, Create.Command command)
 
-        {
+//        {
 
-            // first create the default user
+//            first create the default user
 
-            var user = await UserHelpers.CreateDefaultUser(fixture);
-
-
-
-            var dbContext = fixture.GetDbContext();
-
-            var currentAccessor = new StubCurrentUserAccessor(user.Username);
+//           var user = await UserHelpers.CreateDefaultUser(fixture);
 
 
 
-            var articleCreateHandler = new Create.Handler(dbContext, currentAccessor);
+//            var dbContext = fixture.GetDbContext();
 
-            var created = await articleCreateHandler.Handle(command, new System.Threading.CancellationToken());
-
-
-
-            var dbArticle = await fixture.ExecuteDbContextAsync(db => db.Posts.Where(a => a.Id == created.Post.Id)
-
-                .SingleOrDefaultAsync());
+//            var currentAccessor = new StubCurrentUserAccessor(user.Username);
 
 
 
-            return dbArticle;
-        }
-    }
-}
+//            var articleCreateHandler = new Create.Handler(dbContext, currentAccessor);
+
+//            var created = await articleCreateHandler.Handle(command, new System.Threading.CancellationToken());
+
+//            UNCOMMENT!!!
+
+//            var dbArticle = await fixture.ExecuteDbContextAsync(db => db.Posts.Where(a => a.Id == created.Post.Id)
+
+//                .SingleOrDefaultAsync());
+
+
+
+//            return dbArticle;
+//        }
+//    }
+//}
