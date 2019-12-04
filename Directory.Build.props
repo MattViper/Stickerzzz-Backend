@@ -4,7 +4,7 @@
   <Import Project="DeploymentSettings.props" />
 
   <PropertyGroup>
-    <Company>Clean Architecture</Company>
+    <Company>Matt Viper</Company>
     <Authors>$(Company)</Authors>
     <Copyright>Copyright © $(Company) $([System.DateTime]::Now.Year)</Copyright>
     <Trademark>$(Company)™</Trademark>

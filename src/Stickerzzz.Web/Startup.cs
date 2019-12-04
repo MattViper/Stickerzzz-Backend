@@ -15,6 +15,7 @@ using Stickerzzz.Infrastructure.Data;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Stickerzzz.Infrastructure.Errors;
+using Stickerzzz.Infrastructure.Security;
 
 namespace Stickerzzz.Web
 {
@@ -47,13 +48,15 @@ namespace Stickerzzz.Web
             });
 			services.AddRazorPages();
 
-			services.AddLocalization(x => x.ResourcesPath = "Resources");
 			services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "Stickerzzz API", Version = "v1" }));
 			services.ConfigureSwaggerGen(options =>
    			{
        				options.CustomSchemaIds(x => x.FullName);
    			});
-			//services.AddScoped<IPostsService, PostsService>();
+
+			services.AddAutoMapper(GetType().Assembly);
+			services.AddScoped<IPasswordHasher, PasswordHasher>();
+			services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 			services.AddScoped<ICurrentUserAccessor, CurrentUserAccessor>();
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 			services.AddMediatR(Assembly.GetExecutingAssembly());

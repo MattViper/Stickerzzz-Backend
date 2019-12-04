@@ -21,9 +21,7 @@ namespace Stickerzzz.IntegrationTests
 
 
         static SliceFixture()
-
         {
-
             Config = new ConfigurationBuilder()
                .AddEnvironmentVariables()
                .Build();
@@ -32,7 +30,6 @@ namespace Stickerzzz.IntegrationTests
 
 
         public SliceFixture()
-
         {
             var startup = new Startup(Config);
             var services = new ServiceCollection();
@@ -69,40 +66,24 @@ namespace Stickerzzz.IntegrationTests
 
 
         public async Task<T> ExecuteScopeAsync<T>(Func<IServiceProvider, Task<T>> action)
-
         {
-
             using (var scope = _scopeFactory.CreateScope())
-
             {
-
                 return await action(scope.ServiceProvider);
-
             }
-
         }
 
 
 
         public Task<TResponse> SendAsync<TResponse>(IRequest<TResponse> request)
-
         {
-
             return ExecuteScopeAsync(sp =>
-
             {
-
                 var mediator = sp.GetService<IMediator>();
 
-
-
                 return mediator.Send(request);
-
             });
-
         }
-
-
 
         public Task SendAsync(IRequest request)
 
@@ -125,45 +106,25 @@ namespace Stickerzzz.IntegrationTests
 
 
         public Task ExecuteDbContextAsync(Func<AppDbContext, Task> action)
-
-        {
-
-            return ExecuteScopeAsync(sp => action(sp.GetService<AppDbContext>()));
-
-        }
+            => ExecuteScopeAsync(sp => action(sp.GetService<AppDbContext>()));
 
 
 
         public Task<T> ExecuteDbContextAsync<T>(Func<AppDbContext, Task<T>> action)
-
-        {
-
-            return ExecuteScopeAsync(sp => action(sp.GetService<AppDbContext>()));
-
-        }
+            => ExecuteScopeAsync(sp => action(sp.GetService<AppDbContext>()));
 
 
 
         public Task InsertAsync(params object[] entities)
-
         {
-
             return ExecuteDbContextAsync(db =>
-
             {
-
                 foreach (var entity in entities)
-
                 {
-
                     db.Add(entity);
-
                 }
-
                 return db.SaveChangesAsync();
-
             });
-
         }
     }
 }

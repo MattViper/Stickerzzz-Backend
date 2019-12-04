@@ -21,7 +21,7 @@ namespace Stickerzzz.Web.Users
         [HttpPost]
         public async Task<UserEnvelope> Create([FromBody] Create.Command command) => await _mediator.Send(command);
 
-        [HttpPost]
+        [HttpPost("login")]
         public async Task<UserEnvelope> Login([FromBody] Login.Command command) => await _mediator.Send(command);
     }
 }

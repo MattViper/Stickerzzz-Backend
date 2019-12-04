@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Stickerzzz.Web.Users;
 using System.Threading.Tasks;
-using Stickerzzz.Web.Users;
 
 namespace Stickerzzz.IntegrationTests.Features.User
 {
