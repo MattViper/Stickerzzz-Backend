@@ -16,7 +16,7 @@ namespace Stickerzzz.IntegrationTests.Features.Post
         // < param name="command"></param>
         // <returns></returns>
 
-        public static async Task<Stickerzzz.Core.Entities.Post> CreateArticle(SliceFixture fixture, Create.Command command)
+        public static async Task<Stickerzzz.Core.Entities.Post> CreatePost(SliceFixture fixture, Create.Command command)
         {
             //first create the default user
            var user = await UserHelpers.CreateDefaultUser(fixture);
