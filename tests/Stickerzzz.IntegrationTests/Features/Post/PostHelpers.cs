@@ -37,9 +37,9 @@ namespace Stickerzzz.IntegrationTests.Features.Post
 
 
 
-            var articleCreateHandler = new Create.Handler(dbContext, currentAccessor);
+            var postCreateHandler = new Create.Handler(dbContext, currentAccessor);
 
-            var created = await articleCreateHandler.Handle(command, new System.Threading.CancellationToken());
+            var created = await postCreateHandler.Handle(command, new System.Threading.CancellationToken());
 
 
             var dbPost = await fixture.ExecuteDbContextAsync(db => db.Posts.Where(a => a.Id == created.Post.Id)
