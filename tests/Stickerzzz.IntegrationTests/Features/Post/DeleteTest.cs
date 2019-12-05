@@ -96,6 +96,16 @@ namespace Stickerzzz.IntegrationTests.Features.Post
             );
             var Id = dbPost.Id;
             var slug = dbPost.Slug;
+
+            // create article comment
+            var createCommentCmd = new Stickerzzz.Core.Entities.Comment.Create.Command()
+            {
+                Comment = new Stickerzzz.Core.Entities.Comment.Create.CommentData()
+                {
+                    Body = "post comment"
+                },
+                Slug = slug
+            };
         }
-        }
+    }
 }
