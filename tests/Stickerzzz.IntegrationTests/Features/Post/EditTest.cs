@@ -16,7 +16,20 @@ namespace Stickerzzz.IntegrationTests.Features.Post
                     Body = "Body of the test post",
                     TagList = new string[] { "tag1", "tag2" }
                 }
+             };
 
+            var createdPost = await PostHelpers.CreatePost(this, createCommand);
+
+
+            var command = new Edit.Command()
+            {
+                Post = new Edit.PostData()
+                {
+                    Title = "Updated " + createdPost.Title,
+                    Description = "Updated" + createdPost.Description,
+                    Body = "Updated" + createdPost.Body,
+                },
+                Slug = createdPost.Slug
             };
         }
     }
