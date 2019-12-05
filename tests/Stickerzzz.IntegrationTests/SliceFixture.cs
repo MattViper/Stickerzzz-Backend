@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Stickerzzz.Web;
 using Stickerzzz.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Stickerzzz.IntegrationTests
 {
@@ -31,7 +32,8 @@ namespace Stickerzzz.IntegrationTests
             var services = new ServiceCollection();
 
             DbContextOptionsBuilder builder = new DbContextOptionsBuilder()
-                .UseInMemoryDatabase(DbName);
+                .UseInMemoryDatabase(DbName)
+                .ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning));
             services.AddSingleton(new AppDbContext(builder.Options));
 
             startup.ConfigureServices(services);

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Stickerzzz.Core.Entities;
 using Stickerzzz.Infrastructure.Data;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -35,6 +36,7 @@ namespace Stickerzzz.Web.Posts
             {
                 RuleFor(i => i.Title).NotNull().NotEmpty();
                 RuleFor(i => i.Content).NotNull().NotEmpty();
+                RuleFor(i => i.StickersData).NotNull();
             }
         }
 
@@ -69,7 +71,7 @@ namespace Stickerzzz.Web.Posts
                 var stickers = new List<Sticker>();
                 
 
-                foreach (var sticker in message.Post.StickersData)
+                foreach (var sticker in message.Post.StickersData ?? Enumerable.Empty<StickerData>())
                 {
                     var s = new Sticker()
                     {
@@ -110,7 +112,7 @@ namespace Stickerzzz.Web.Posts
                 await _context.Posts.AddAsync(post, cancellationToken);
                 await _context.Stickers.AddRangeAsync(stickers);
 
-                foreach (var sticker in post.Stickers)
+                foreach (var sticker in post.Stickers ?? Enumerable.Empty<Sticker>())
                 {
                     await _context.TagStickers.AddRangeAsync(tags.Select(x => new TagStickers()
                     {

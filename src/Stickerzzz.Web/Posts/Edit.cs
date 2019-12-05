@@ -49,7 +49,7 @@ namespace Stickerzzz.Web.Posts
                 var post = await _context.Posts
                     .Include(i => i.PostStickers)
                         .ThenInclude(i => i.Sticker)
-                            .ThenInclude(i => i.TagList)
+                            //.ThenInclude(i => i.TagList)
                     .Where(x => x.Slug == message.Slug)
                     .FirstOrDefaultAsync(cancellationToken);
 

@@ -16,14 +16,21 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using Stickerzzz.Infrastructure.Errors;
 using Stickerzzz.Infrastructure.Security;
+using Microsoft.EntityFrameworkCore;
 
 namespace Stickerzzz.Web
 {
 	public class Startup
 	{
-		public Startup(IConfiguration config) => this.Configuration = config;
+		public const string DEFAULT_DATABASE_CONNECTIONSTRING = "Host=host.docker.internal;Port=5432;Username=postgres;Password=NoFearNoMore12;Database=Stickerzzz;Command Timeout=0";
+		public const string DEFAULT_DATABASE_PROVIDER = "postgres";
 
-		public IConfiguration Configuration { get; }
+		private readonly IConfiguration _config;
+
+		public Startup(IConfiguration config)
+		{
+			_config = config;
+		}
 
 		public IServiceProvider ConfigureServices(IServiceCollection services)
 		{
@@ -33,11 +40,30 @@ namespace Stickerzzz.Web
 				options.MinimumSameSitePolicy = SameSiteMode.None;
 			});
 
-			services.AddDbContext();
+			// take the connection string from the environment variable or use hard-coded database name
+			var connectionString = _config.GetValue<string>("ASPNETCORE_Stickerzzz_ConnectionString") ??
+								   DEFAULT_DATABASE_CONNECTIONSTRING;
+			// take the database provider from the environment variable or use hard-coded database provider
+			var databaseProvider = _config.GetValue<string>("ASPNETCORE_Stickerzzz_DatabaseProvider");
+			if (string.IsNullOrWhiteSpace(databaseProvider))
+				databaseProvider = DEFAULT_DATABASE_PROVIDER;
+
+			services.AddDbContext<AppDbContext>(options =>
+			{
+				if (databaseProvider.ToLower().Trim().Equals("sqlite"))
+					options.UseSqlite(connectionString);
+				else if (databaseProvider.ToLower().Trim().Equals("postgres"))
+				{
+					options.UseNpgsql(connectionString);
+				}
+				else
+					throw new Exception("Database provider unknown. Please check configuration");
+			});         
+			
 			//var mappingConfig = new MapperConfiguration(mc =>
-			//{
-			//    mc.AddProfile(new MappingProfile());
-			//});
+						//{
+						//    mc.AddProfile(new MappingProfile());
+						//});
 
 			//IMapper mapper = mappingConfig.CreateMapper();
 			//services.AddSingleton(mapper);
