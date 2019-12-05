@@ -11,7 +11,7 @@ namespace Stickerzzz.IntegrationTests.Features.Post
     {
         // <summary>
 
-        // creates an article based on the given Create command.It also creates a default user
+        // creates an post based on the given Create command.It also creates a default user
 
         // </summary>
 
