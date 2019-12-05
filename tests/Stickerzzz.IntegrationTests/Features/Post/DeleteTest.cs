@@ -97,7 +97,7 @@ namespace Stickerzzz.IntegrationTests.Features.Post
             var Id = dbPost.Id;
             var slug = dbPost.Slug;
 
-            // create article comment
+            // create post comment
             var createCommentCmd = new Stickerzzz.Core.Entities.Comment.Create.Command()
             {
                 Comment = new Stickerzzz.Core.Entities.Comment.Create.CommentData()
@@ -106,6 +106,22 @@ namespace Stickerzzz.IntegrationTests.Features.Post
                 },
                 Slug = slug
             };
+            var comment = await CommentHelpers.CreateComment(this, createCommentCmd, UserHelpers.DefaultUserName);
+
+
+
+            // delete post with comment
+
+            var deleteCmd = new Delete.Command(slug);
+
+            var dbContext = GetDbContext();
+
+            var postDeleteHandler = new Delete.QueryHandler(dbContext);
+            await postDeleteHandler.Handle(deleteCmd, new System.Threading.CancellationToken());
+
+            var deleted = await ExecuteDbContextAsync(db => db.Post.Where(d => d.Slug == deleteCmd.Slug).SingleOrDefaultAsync());
+            Assert.Null(deleted);
+
         }
     }
 }
