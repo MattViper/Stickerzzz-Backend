@@ -41,8 +41,7 @@ namespace Stickerzzz.Web
 			});
 
 			// take the connection string from the environment variable or use hard-coded database name
-			var connectionString = _config.GetValue<string>("ASPNETCORE_Stickerzzz_ConnectionString") ??
-								   DEFAULT_DATABASE_CONNECTIONSTRING;
+			var connectionString = "Host=host.docker.internal;Port=5432;Username=postgres;Password=NoFearNoMore12;Database=Stickerzzz;Command Timeout=0";
 			// take the database provider from the environment variable or use hard-coded database provider
 			var databaseProvider = _config.GetValue<string>("ASPNETCORE_Stickerzzz_DatabaseProvider");
 			if (string.IsNullOrWhiteSpace(databaseProvider))
