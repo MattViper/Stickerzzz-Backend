@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   stickerzzz.web:
-    image: ${DOCKER_REGISTRY-}stickerzzzweb
+    image: ${DOCKER_REGISTRY}stickerzzzweb
     build:
       context: .
       dockerfile: src/Stickerzzz.Web/Dockerfile

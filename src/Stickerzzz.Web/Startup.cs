@@ -115,7 +115,7 @@ namespace Stickerzzz.Web
 					.AllowAnyMethod());
 
 			app.UseRouting();
-			//app.UseAuthorization();
+			app.UseAuthorization();
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 			app.UseCookiePolicy();
