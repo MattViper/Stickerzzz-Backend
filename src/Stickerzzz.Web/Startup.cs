@@ -17,6 +17,7 @@ using Microsoft.Extensions.Logging;
 using Stickerzzz.Infrastructure.Errors;
 using Stickerzzz.Infrastructure.Security;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Serialization;
 
 namespace Stickerzzz.Web
 {
@@ -78,6 +79,13 @@ namespace Stickerzzz.Web
    			{
        				options.CustomSchemaIds(x => x.FullName);
    			});
+
+			services.AddMvc()
+				.SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+				.AddNewtonsoftJson(opt => {
+					opt.SerializerSettings.ContractResolver = new DefaultContractResolver();
+					opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+				});
 
 			services.AddAutoMapper(GetType().Assembly);
 			services.AddScoped<IPasswordHasher, PasswordHasher>();
