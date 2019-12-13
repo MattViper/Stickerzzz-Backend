@@ -8,7 +8,12 @@ COPY Stickerzzz.Core.csproj ./src/Stickerzzz.Core/
 COPY Stickerzzz.Infrastructure.csproj ./src/Stickerzzz.Infrastructure/
 COPY Stickerzzz.Web.csproj ./src/Stickerzzz.Web/
 
-RUN dotnet restore "src/Stickerzzz.Web/Stickerzzz.Web.csproj"
+
+RUN dotnet restore "src/Stickerzzz.Core/Stickerzzz.Core.csproj"
+COPY . Stickerzzz.Core
+RUN dotnet restore "src/Stickerzzz.Core/Stickerzzz.Core.csproj"
+COPY . Stickerzzz.Infrastructure
+RUN dotnet restore "src/Stickerzzz.Infrastructure/Stickerzzz.Infrastructure.csproj"
 COPY . Stickerzzz.Web
 WORKDIR "src/Stickerzzz.Web"
 RUN dotnet build "Stickerzzz.Web.csproj" -c Release -o /app
