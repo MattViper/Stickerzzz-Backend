@@ -1,11 +1,21 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS base
 WORKDIR /app
+EXPOSE 80
 
-COPY . ./
-RUN dotnet publish Stickerzzz.Web -c Release -o out
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+WORKDIR /src
+COPY ["src/Stickerzzz.Web/Stickerzzz.Web.csproj", "src/Stickerzzz.Web/"]
+COPY ["src/Stickerzzz.Core/Stickerzzz.Core.csproj", "src/Stickerzzz.Core/"]
+COPY ["src/Stickerzzz.Infrastructure/Stickerzzz.Infrastructure.csproj", "src/Stickerzzz.Infrastructure/"]
+RUN dotnet restore "src/Stickerzzz.Web/Stickerzzz.Web.csproj"
+COPY . .
+WORKDIR "/src/src/Stickerzzz.Web"
+RUN dotnet build "Stickerzzz.Web.csproj" -c Release -o /app/build
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
+FROM build AS publish
+RUN dotnet publish "Stickerzzz.Web.csproj" -c Release -o /app/publish
+
+FROM base AS final
 WORKDIR /app
-COPY --from=build-env /app/Stickerzzz.Web/out .
-
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Stickerzzz.Web.dll"]

@@ -19,7 +19,6 @@
   </Target>
   
   <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish" Condition="'$(WebProjectMode)' == 'true'">
-    <Exec Command="bower install" />
-    <Exec Command="dotnet bundle" />
+   
   </Target>
 </Project>
