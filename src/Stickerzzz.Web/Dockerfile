@@ -11,10 +11,10 @@ COPY Stickerzzz.Web.csproj src/Stickerzzz.Web/
 RUN dotnet restore "src/Stickerzzz.Web/Stickerzzz.Web.csproj"
 COPY . Stickerzzz.Web
 WORKDIR "src/Stickerzzz.Web"
-RUN dotnet build "Stickerzzz.Web.csproj" -c Release -o /app/build
+RUN dotnet build "Stickerzzz.Web.csproj" -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "Stickerzzz.Web.csproj" -c Release -o /app/publish
+RUN dotnet publish "Stickerzzz.Web.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
