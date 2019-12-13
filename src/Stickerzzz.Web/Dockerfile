@@ -4,12 +4,12 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
-COPY ["src/Stickerzzz.Core/Stickerzzz.Core.csproj", "src/Stickerzzz.Core/"]
-COPY ["src/Stickerzzz.Infrastructure/Stickerzzz.Infrastructure.csproj", "src/Stickerzzz.Infrastructure/"]
-COPY ["src/Stickerzzz.Web/Stickerzzz.Web.csproj", "src/Stickerzzz.Web/"]
+COPY ["Stickerzzz.Core.csproj", "src/Stickerzzz.Core/"]
+COPY ["Stickerzzz.Infrastructure.csproj", "src/Stickerzzz.Infrastructure/"]
+COPY ["Stickerzzz.Web.csproj", "src/Stickerzzz.Web/"]
 
 RUN dotnet restore "src/Stickerzzz.Web/Stickerzzz.Web.csproj"
-COPY . .
+COPY . Stickerzzz.Web
 WORKDIR "/src/src/Stickerzzz.Web"
 RUN dotnet build "Stickerzzz.Web.csproj" -c Release -o /app/build
 
