@@ -1,11 +1,21 @@
 version: '3.7'
 
 services:
-  stickerzzz.web:
+  web:
     image: ${DOCKER_REGISTRY}stickerzzzweb
     build:
       context: .
       dockerfile: src/Stickerzzz.Web/Dockerfile
+    networks:
+      services-network:
+        aliases:
+         - web
+    links:
+     - "db:db"
+    expose:
+     - "5000"
+    restart: always
+
   db:
     image: postgres:12
     restart: always
@@ -15,12 +25,24 @@ services:
       POSTGRES_DB: "Stickerzzz"
     ports:
       # <Port exposed> : < Port running inside container>
-      - '3333:5432'
+      - '4444:5432'
     expose:
-      - '3333'
+      - '4444'
       # Where our data will be persisted
     volumes:
       - db:/var/lib/postgres
+    networks:
+      services-network:
+        aliases:
+         - db
+    container_name: db
+
+
 # Names our volume
 volumes:
   db:
+
+networks:
+   services-network:
+     name: services-network
+     driver: bridge

@@ -17,12 +17,17 @@ using Microsoft.Extensions.Logging;
 using Stickerzzz.Infrastructure.Errors;
 using Stickerzzz.Infrastructure.Security;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
+using System.Linq;
+using System.Net.Sockets;
 
 namespace Stickerzzz.Web
 {
 	public class Startup
 	{
-		public const string DEFAULT_DATABASE_CONNECTIONSTRING = "Host=host.docker.internal;Port=5432;Username=postgres;Password=NoFearNoMore12;Database=Stickerzzz;Command Timeout=0";
+		static readonly string name = Dns.GetHostName(); // get container id
+		static readonly IPAddress ip = Dns.GetHostEntry(name).AddressList.FirstOrDefault(x => x.AddressFamily == AddressFamily.InterNetwork);
+		public string DEFAULT_DATABASE_CONNECTIONSTRING = "Host=db;Port=5432;Username=postgres;Password=NoFearNoMore12;Database=Stickerzzz;Command Timeout = 0";
 		public const string DEFAULT_DATABASE_PROVIDER = "postgres";
 
 		private readonly IConfiguration _config;
@@ -41,7 +46,7 @@ namespace Stickerzzz.Web
 			});
 
 			// take the connection string from the environment variable or use hard-coded database name
-			var connectionString = "Host=host.docker.internal;Port=5432;Username=postgres;Password=NoFearNoMore12;Database=Stickerzzz;Command Timeout=0";
+			var connectionString = "Host=db;Port=5432;Username=postgres;Password=NoFearNoMore12;Database=Stickerzzz;Command Timeout = 0";
 			// take the database provider from the environment variable or use hard-coded database provider
 			var databaseProvider = _config.GetValue<string>("ASPNETCORE_Stickerzzz_DatabaseProvider");
 			if (string.IsNullOrWhiteSpace(databaseProvider))
