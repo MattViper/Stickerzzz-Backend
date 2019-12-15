@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:57678/",
+      "applicationUrl": "http://localhost:5000/",
       "sslPort": 0
     }
   },
@@ -14,12 +14,6 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
-    },
-    "Docker": {
-      "commandName": "Docker",
-      "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
-      "httpPort": 57679
     },
     "Stickerzzz.Web": {
       "commandName": "Project"

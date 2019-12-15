@@ -6,9 +6,6 @@
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <OutputType>Exe</OutputType>
     <WebProjectMode>true</WebProjectMode>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..</DockerfileContext>
-    <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
     <Authors>Mateusz Żmijewski</Authors>
     <Product>Stickerzzz</Product>
     <Company>Stickerzzz</Company>
@@ -24,7 +21,7 @@
     <PackageReference Include="MediatR" />
     <PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" />
-    <PackageReference Include="Microsoft.AspNet.Identity.Core"  />
+    <PackageReference Include="Microsoft.AspNet.Identity.Core" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Core" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" />
@@ -50,6 +47,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Stickerzzz.Core\Stickerzzz.Core.csproj" />
     <ProjectReference Include="..\Stickerzzz.Infrastructure\Stickerzzz.Infrastructure.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 
 </Project>
