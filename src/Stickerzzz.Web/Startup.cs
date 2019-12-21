@@ -84,6 +84,13 @@ namespace Stickerzzz.Web
        				options.CustomSchemaIds(x => x.FullName);
    			});
 
+			services.AddMvc()
+				.SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+				.AddNewtonsoftJson(opt => {
+					opt.SerializerSettings.ContractResolver = new DefaultContractResolver();
+					opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+				});
+
 			services.AddAutoMapper(GetType().Assembly);
 			services.AddScoped<IPasswordHasher, PasswordHasher>();
 			services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();

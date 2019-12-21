@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using AutoMapper;
+using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Stickerzzz.Core.Entities;
@@ -57,16 +58,19 @@ namespace Stickerzzz.Web.Posts
         {
             private readonly AppDbContext _context;
             private readonly ICurrentUserAccessor _currentUserAccessor;
+            private readonly IMapper _mapper;
 
-            public Handler(AppDbContext context, ICurrentUserAccessor currentUserAccessor)
+            public Handler(AppDbContext context, ICurrentUserAccessor currentUserAccessor, IMapper mapper)
             {
                 _context = context;
                 _currentUserAccessor = currentUserAccessor;
+                _mapper = mapper;
             }
 
             public async Task<PostEnvelope> Handle(Command message, CancellationToken cancellationToken)
             {
-                var creator = await _context.Users.FirstAsync(i => i.UserName == _currentUserAccessor.GetCurrentUsername(), cancellationToken);
+                
+                var creator = await _context.Users.FirstAsync(i => i.UserName == "mattviper", cancellationToken);
                 var tags = new List<Tag>();
                 var stickers = new List<Sticker>();
                 
@@ -129,7 +133,9 @@ namespace Stickerzzz.Web.Posts
 
                 await _context.SaveChangesAsync();
 
-                return new PostEnvelope(post);
+                var createdPost = _mapper.Map<Post, PostVM>(post);
+
+                return new PostEnvelope(createdPost);
 
             }
         }
