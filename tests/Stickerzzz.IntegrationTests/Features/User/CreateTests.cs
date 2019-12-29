@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Stickerzzz.Infrastructure.Security;
 using Stickerzzz.Web.Users;
 using System;
@@ -12,6 +13,12 @@ namespace Stickerzzz.IntegrationTests.Features.User
 {
     public class CreateTests : SliceFixture
     {
+        private readonly IMapper _mapper;
+        public CreateTests(IMapper mapper) : base(mapper)
+        {
+            _mapper = mapper;
+        }
+
         [Fact]
         public async Task Expect_Create_User()
         {

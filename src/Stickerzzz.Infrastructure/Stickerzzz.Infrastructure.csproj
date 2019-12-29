@@ -2,13 +2,13 @@
   <Sdk Name="Microsoft.Build.CentralPackageVersions" Version="2.0.52" />
   
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Ardalis.EFCore.Extensions"/>
     <PackageReference Include="Autofac" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" />
-    <PackageReference Include="Ardalis.EFCore.Extensions" />
     <PackageReference Include="AutoMapper" />
     <PackageReference Include="FluentValidation.AspNetCore" />
     <PackageReference Include="MediatR" />
@@ -21,7 +21,6 @@
     <PackageReference Include="Microsoft.IdentityModel.Tokens" />
     <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" />
     <PackageReference Include="SQLite" />
     <PackageReference Include="NETStandard.Library" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" />

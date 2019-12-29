@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using AutoMapper;
+using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Stickerzzz.Core.Entities;
@@ -38,10 +39,13 @@ namespace Stickerzzz.Web.Posts
         public class Handler : IRequestHandler<Command, PostEnvelope>
         {
             private readonly AppDbContext _context;
+            private readonly IMapper _mapper;
 
-            public Handler(AppDbContext context)
+
+            public Handler(AppDbContext context, IMapper mapper)
             {
                 _context = context;
+                _mapper = mapper;
             }
 
             public async Task<PostEnvelope> Handle(Command message, CancellationToken cancellationToken)
@@ -77,9 +81,13 @@ namespace Stickerzzz.Web.Posts
 
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return new PostEnvelope(await _context.Posts.GetAllData()
+                var editedPost = await _context.Posts.GetAllData()
                     .Where(i => i.Slug == post.Slug)
-                    .FirstOrDefaultAsync(cancellationToken));
+                    .FirstOrDefaultAsync(cancellationToken);
+
+                var mappedPost = _mapper.Map<Post, PostVM>(editedPost);
+
+                return new PostEnvelope(mappedPost);
 
                           
             }

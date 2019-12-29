@@ -1,4 +1,5 @@
-﻿using Stickerzzz.Core.Users;
+﻿using AutoMapper;
+using Stickerzzz.Core.Users;
 using Stickerzzz.Infrastructure.Security;
 using Stickerzzz.Web.Users;
 using System;
@@ -9,6 +10,11 @@ namespace Stickerzzz.IntegrationTests.Features.User
 {
     public class LoginTests : SliceFixture
     {
+        private readonly IMapper _mapper;
+        public LoginTests(IMapper mapper) : base(mapper)
+        {
+            _mapper = mapper;
+        }
         [Fact]
         public async Task Expect_Login()
         {

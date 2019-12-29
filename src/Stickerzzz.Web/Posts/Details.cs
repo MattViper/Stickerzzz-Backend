@@ -1,6 +1,8 @@
-﻿using FluentValidation;
+﻿using AutoMapper;
+using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Stickerzzz.Core.Entities;
 using Stickerzzz.Infrastructure.Data;
 using Stickerzzz.Infrastructure.Errors;
 using System;
@@ -35,9 +37,12 @@ namespace Stickerzzz.Web.Posts
         public class QueryHandler : IRequestHandler<Query, PostEnvelope>
         {
             private readonly AppDbContext _context;
+            private readonly IMapper _mapper;
 
-            public QueryHandler(AppDbContext context)
+
+            public QueryHandler(AppDbContext context, IMapper mapper)
             {
+                _mapper = mapper;
                 _context = context;
             }
 
@@ -51,7 +56,9 @@ namespace Stickerzzz.Web.Posts
                     throw new RestException(HttpStatusCode.NotFound, new { Post = Constants.NOT_FOUND });
                 }
 
-                return new PostEnvelope(post);
+                var foundPost = _mapper.Map<Post, PostVM>(post);
+
+                return new PostEnvelope(foundPost);
             }
         }
     }

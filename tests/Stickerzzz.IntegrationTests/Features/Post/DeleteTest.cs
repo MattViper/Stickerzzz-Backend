@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Stickerzzz.Core.Entities;
 using Stickerzzz.IntegrationTests.Features.User;
@@ -9,6 +10,12 @@ namespace Stickerzzz.IntegrationTests.Features.Post
 {
     public class DeleteTest : SliceFixture
     {
+        private readonly IMapper _mapper;
+        public DeleteTest(IMapper mapper) : base(mapper)
+        {
+            _mapper = mapper;
+        }
+
         [Fact]
         public async Task Expect_Delete_Post()
         {
@@ -20,7 +27,7 @@ namespace Stickerzzz.IntegrationTests.Features.Post
                     Content = "Content of the test post",
                 }
             };
-            var post = await PostHelpers.CreatePost(this, createCmd);
+            var post = await PostHelpers.CreatePost(this, createCmd, _mapper);
             var slug = post.Slug;
 
             var deleteCmd = new Delete.Command(slug);
@@ -48,7 +55,7 @@ namespace Stickerzzz.IntegrationTests.Features.Post
 
                 }
             };
-            var post = await PostHelpers.CreatePost(this, createCmd);
+            var post = await PostHelpers.CreatePost(this, createCmd, _mapper);
 
             //var dbPostWithTags = await ExecuteDbContextAsync(
 

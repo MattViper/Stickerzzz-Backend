@@ -34,7 +34,7 @@ namespace Stickerzzz.Infrastructure
 
                 _context.CommitTransaction();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 _context.RollbackTransaction();
                 throw;

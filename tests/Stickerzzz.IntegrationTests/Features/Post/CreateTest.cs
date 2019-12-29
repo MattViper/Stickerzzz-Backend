@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Stickerzzz.Core.Entities;
 using Stickerzzz.IntegrationTests.Features.User;
@@ -12,6 +13,11 @@ namespace Stickerzzz.IntegrationTests.Features.Post
 {
 	public class CreateTest : SliceFixture
 	{
+        private readonly IMapper _mapper;
+        public CreateTest(IMapper mapper) : base(mapper)
+        {
+            _mapper = mapper;
+        }
         //complete test with tags and stickers data
         [Fact]
         public async Task Expect_Create_Post()
@@ -39,7 +45,7 @@ namespace Stickerzzz.IntegrationTests.Features.Post
                 }
 
             };
-            var post = await PostHelpers.CreatePost(this, command);
+            var post = await PostHelpers.CreatePost(this, command, _mapper);
 
             Assert.NotNull(post);
             Assert.Equal(post.Title, command.Post.Title);

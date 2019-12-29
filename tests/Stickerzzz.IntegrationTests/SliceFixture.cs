@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Stickerzzz.Web;
 using Stickerzzz.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using AutoMapper;
 
 namespace Stickerzzz.IntegrationTests
 {
@@ -18,7 +19,7 @@ namespace Stickerzzz.IntegrationTests
         private readonly IServiceScopeFactory _scopeFactory;
         private readonly ServiceProvider _provider;
         private readonly string DbName = Guid.NewGuid() + ".db";
-
+        private readonly IMapper _mapper;
         static SliceFixture()
         {
             Config = new ConfigurationBuilder()
@@ -26,8 +27,9 @@ namespace Stickerzzz.IntegrationTests
                .Build();
         }
 
-        public SliceFixture()
+        public SliceFixture(IMapper mapper)
         {
+            _mapper = mapper;
             var startup = new Startup(Config);
             var services = new ServiceCollection();
 
