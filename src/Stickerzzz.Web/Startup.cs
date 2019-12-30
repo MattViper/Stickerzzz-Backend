@@ -50,11 +50,11 @@ namespace Stickerzzz.Web
             // take the connection string from the environment variable or use hard-coded database name
             var connectionString = "Host=127.0.0.1;Port=5432;Username=postgres;Password=Paramiko12;Database=stickerzzz;sslmode=Prefer;Trust Server Certificate=true;";
             const string herokuConnectionString = @"
-				Host=ec2-107-21-214-26.compute-1.amazonaws.com;
+				Host=ec2-174-129-33-156.compute-1.amazonaws.com;
 				Port=5432;
-				Username=otsmskonphslqn;
-				Password=2f0529e947bd0db1a2194de1f46a9c3bfc14918d3500c60d2a1dd64091b5ec2f;
-				Database=dbd8p2d5gcap7;
+				Username=zibwmuziwhanty;
+				Password=44781b72879bf5b94782c31932992ce14b6f7951206be5f0fa2f37b685e6adf3;
+				Database=d3hodo9kqr1vdp;
 				Pooling=true;
 				SSL Mode=Require;
 				TrustServerCertificate=True;
