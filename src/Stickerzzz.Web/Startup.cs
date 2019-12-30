@@ -48,7 +48,7 @@ namespace Stickerzzz.Web
 			});
 
 			// take the connection string from the environment variable or use hard-coded database name
-			var connectionString = "Host=stickerzzz-postgres.postgres.database.azure.com;Port=5432;Username=rideryz@stickerzzz-postgres.postgres.database.azure.com;Password=Paramiko12;Database=stickerzzz;Command Timeout = 0;SSL Mode = Require;";
+			var connectionString = "Host=127.0.0.1;Port=5432;Username=postgres;Password=Paramiko12;Database=stickerzzz;sslmode=Prefer;Trust Server Certificate=true;";
 			var connectionStringLocal = "Host=127.0.0.1;Port=5432;Username=postgres;Password=NoFearNoMore12;Database=stickerzzz;Command Timeout = 0;SSL Mode = Prefer;";
 			// take the database provider from the environment variable or use hard-coded database provider
 			var databaseProvider = _config.GetValue<string>("ASPNETCORE_Stickerzzz_DatabaseProvider");
