@@ -56,7 +56,6 @@ namespace Stickerzzz.Web
 				Password=2f0529e947bd0db1a2194de1f46a9c3bfc14918d3500c60d2a1dd64091b5ec2f;
 				Database=dbd8p2d5gcap7;
 				Pooling=true;
-				Use SSL Stream=True;
 				SSL Mode=Require;
 				TrustServerCertificate=True;
 				";
