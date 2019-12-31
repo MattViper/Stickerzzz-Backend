@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Stickerzzz.Core.Entities;
 using Stickerzzz.Infrastructure.Data;
@@ -34,11 +35,12 @@ namespace Stickerzzz.Web.Posts
             {
                 private readonly AppDbContext _context;
                 private readonly ICurrentUserAccessor _currentUserAccessor;
-
-                public QueryHandler(AppDbContext context, ICurrentUserAccessor currentUserAccessor)
+                private readonly IMapper _mapper;
+                public QueryHandler(AppDbContext context, ICurrentUserAccessor currentUserAccessor, IMapper mapper)
                 {
                     _context = context;
                     _currentUserAccessor = currentUserAccessor;
+                    _mapper = mapper;
                 }
 
                 public async Task<PostsEnvelope> Handle(Query message, CancellationToken cancellationToken)
@@ -97,10 +99,11 @@ namespace Stickerzzz.Web.Posts
                         .AsNoTracking()
                         .ToListAsync();
 
+                    var postsVM = _mapper.Map<List<Post>, List<PostVM>>(posts);
                     return new PostsEnvelope()
                     {
-                        Posts = posts,
-                        PostsCount = posts.Count
+                        Posts = postsVM,
+                        PostsCount = postsVM.Count
 
                     };
 
