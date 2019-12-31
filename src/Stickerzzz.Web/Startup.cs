@@ -83,7 +83,7 @@ namespace Stickerzzz.Web
                             mc.AddProfile(new MappingPost());
                             mc.AddProfile(new MappingProfile());
                         });
-
+            mappingConfig.AssertConfigurationIsValid();
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
 

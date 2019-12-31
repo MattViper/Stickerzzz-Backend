@@ -20,15 +20,36 @@ namespace Stickerzzz.Web.Posts
     public class PostVM
     {
         public int Id { get; set; }
-        public Guid AuthorId { get; set; }
+        public Guid CreatorId { get; set; }
         public string Title { get; set; }
         public string Slug { get; set; }
         public string Content { get; set; }
         public int Hearts { get; set; }
-        //public List<Sticker> Stickers { get; set; }
-        //public List<Comment> Comments { get; set; }
+        public List<StickerVM> Stickers { get; set; }
+        public List<CommentVM> Comments { get; set; }
         public bool Favorited { get; set; }
         public int FavoritesCount { get; set; }
+
+    }
+
+    public class StickerVM
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public double Longitude { get; set; }
+        public double Latitude { get; set; }
+        public string Img { get; set; }
+        public List<string> TagList { get; set; }
+
+    }
+
+    public class CommentVM
+    {
+        public int Id { get; set; }
+        public string Content { get; set; }
+        public int Hearts { get; set; }
+        public int PostId { get; set; }
+        public  Guid CreatorId { get; set; }
 
     }
 }
