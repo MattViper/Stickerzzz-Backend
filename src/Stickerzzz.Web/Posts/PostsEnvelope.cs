@@ -8,7 +8,7 @@ namespace Stickerzzz.Web.Posts
 {
     public class PostsEnvelope
     {
-        public List<Post> Posts { get; set; }
+        public List<PostVM> Posts { get; set; }
         public int PostsCount { get; set; }
     }
 }
