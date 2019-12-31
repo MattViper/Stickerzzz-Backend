@@ -11,7 +11,7 @@ namespace Stickerzzz.Web.Users
     {
         public MappingProfile()
         {
-            CreateMap<AppUser, User>(MemberList.None);
+            CreateMap<AppUser, User>(MemberList.Destination);
         }
     }
 }

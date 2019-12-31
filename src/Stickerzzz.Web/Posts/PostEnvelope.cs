@@ -25,8 +25,8 @@ namespace Stickerzzz.Web.Posts
         public string Slug { get; set; }
         public string Content { get; set; }
         public int Hearts { get; set; }
-        public List<Sticker> Stickers { get; set; }
-        public List<Comment> Comments { get; set; }
+        //public List<Sticker> Stickers { get; set; }
+        //public List<Comment> Comments { get; set; }
         public bool Favorited { get; set; }
         public int FavoritesCount { get; set; }
 
