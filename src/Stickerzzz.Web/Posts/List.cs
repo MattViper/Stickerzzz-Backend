@@ -97,7 +97,7 @@ namespace Stickerzzz.Web.Posts
                         .Skip(message.Offset ?? 0)
                         .Take(message.Limit ?? 20)
                         .AsNoTracking()
-                        .ToListAsync();
+                        .ToListAsync(cancellationToken);
 
                     var postsVM = _mapper.Map<List<Post>, List<PostVM>>(posts);
                     return new PostsEnvelope()
