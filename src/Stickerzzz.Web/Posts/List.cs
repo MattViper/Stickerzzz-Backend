@@ -50,7 +50,7 @@ namespace Stickerzzz.Web.Posts
                     if (message.IsFeed && _currentUserAccessor.GetCurrentUsername() != null)
                     {
                         var currentUser = await _context.Users.Include(i => i.FriendRequestsAccepted).FirstOrDefaultAsync(i => i.UserName == _currentUserAccessor.GetCurrentUsername(), cancellationToken);
-                        queryable.Where(i => currentUser.FriendRequestsAccepted.Select(f => f.FriendId).Contains(i.Creator.Id));
+                        queryable = queryable.Where(i => currentUser.FriendRequestsAccepted.Select(f => f.FriendId).Contains(i.Creator.Id));
                     }
 
                     if (!string.IsNullOrWhiteSpace(message.Tag))
