@@ -22,6 +22,7 @@ using System.Linq;
 using System.Net.Sockets;
 using Newtonsoft.Json.Serialization;
 using Stickerzzz.Web.Posts;
+using Stickerzzz.Web.Users;
 
 namespace Stickerzzz.Web
 {
@@ -80,8 +81,9 @@ namespace Stickerzzz.Web
             var mappingConfig = new MapperConfiguration(mc =>
                         {
                             mc.AddProfile(new MappingPost());
+                            mc.AddProfile(new MappingProfile());
                         });
-
+            mappingConfig.AssertConfigurationIsValid();
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
 

@@ -12,6 +12,8 @@ namespace Stickerzzz.Web.Posts
         public MappingPost()
         {
             CreateMap<Post, PostVM>(MemberList.Destination);
+            CreateMap<Sticker, StickerVM>(MemberList.Destination);
+            CreateMap<Comment, CommentVM>(MemberList.Destination);
         }
     }
 }

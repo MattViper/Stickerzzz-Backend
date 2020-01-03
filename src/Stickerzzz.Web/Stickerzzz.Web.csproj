@@ -1,56 +1,56 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-  <Sdk Name="Microsoft.Build.CentralPackageVersions" Version="2.0.52" />
-  
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <PreserveCompilationContext>true</PreserveCompilationContext>
-    <OutputType>Exe</OutputType>
-    <WebProjectMode>true</WebProjectMode>
-    <Authors>Mateusz Żmijewski</Authors>
-    <Product>Stickerzzz</Product>
-    <Company>Stickerzzz</Company>
-    <Copyright>Copyright © Mateusz Żmijewski 2019</Copyright>
-  </PropertyGroup>
-  
-  <ItemGroup>
-    <PackageReference Include="AutoMapper" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
-    <PackageReference Include="FluentValidation.AspNetCore" />
-    <PackageReference Include="FluentValidation.DependencyInjectionExtensions"  />
-    <PackageReference Include="FluentValidation.WebApi" />
-    <PackageReference Include="MediatR" />
-    <PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" />
-    <PackageReference Include="Microsoft.AspNet.Identity.Core" />
-    <PackageReference Include="Microsoft.AspNet.WebApi.Core" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer"  />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" PrivateAssets="all"  />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug"  />
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" PrivateAssets="All"  />
-    <PackageReference Include="Microsoft.Web.LibraryManager.Build"  />
-    <PackageReference Include="Newtonsoft.Json"  />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"  />
-    <PackageReference Include="Serilog" />
-    <PackageReference Include="Serilog.Extensions.Logging" />
-    <PackageReference Include="Serilog.Sinks.Console" />
-    <PackageReference Include="Swashbuckle.AspNetCore" />
-    <PackageReference Include="NETStandard.Library" />
-    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <ProjectReference Include="..\Stickerzzz.Core\Stickerzzz.Core.csproj" />
-    <ProjectReference Include="..\Stickerzzz.Infrastructure\Stickerzzz.Infrastructure.csproj" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Properties\PublishProfiles\" />
-  </ItemGroup>
+    <Sdk Name="Microsoft.Build.CentralPackageVersions" Version="2.0.52" />
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <PreserveCompilationContext>true</PreserveCompilationContext>
+        <OutputType>Exe</OutputType>
+        <WebProjectMode>true</WebProjectMode>
+        <Authors>Mateusz Żmijewski</Authors>
+        <Product>Stickerzzz</Product>
+        <Company>Stickerzzz</Company>
+        <Copyright>Copyright © Mateusz Żmijewski 2019</Copyright>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper" />
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
+        <PackageReference Include="FluentValidation.AspNetCore" />
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+        <PackageReference Include="FluentValidation.WebApi" />
+        <PackageReference Include="MediatR" />
+        <PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" />
+        <PackageReference Include="Microsoft.AspNet.Identity.Core" />
+        <PackageReference Include="Microsoft.AspNet.WebApi.Core" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.Web.LibraryManager.Build" />
+        <PackageReference Include="Newtonsoft.Json" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+        <PackageReference Include="Serilog" />
+        <PackageReference Include="Serilog.Extensions.Logging" />
+        <PackageReference Include="Serilog.Sinks.Console" />
+        <PackageReference Include="Swashbuckle.AspNetCore" />
+        <PackageReference Include="NETStandard.Library" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Stickerzzz.Core\Stickerzzz.Core.csproj" />
+        <ProjectReference Include="..\Stickerzzz.Infrastructure\Stickerzzz.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Properties\PublishProfiles\" />
+    </ItemGroup>
 
 </Project>
