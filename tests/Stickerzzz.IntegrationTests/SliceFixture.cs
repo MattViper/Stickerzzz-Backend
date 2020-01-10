@@ -9,29 +9,31 @@ using Stickerzzz.Web;
 using Stickerzzz.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using AutoMapper;
+using Moq;
 
 namespace Stickerzzz.IntegrationTests
 {
     public class SliceFixture : IDisposable
     {
         static readonly IConfiguration Config;
-
+        
         private readonly IServiceScopeFactory _scopeFactory;
         private readonly ServiceProvider _provider;
         private readonly string DbName = Guid.NewGuid() + ".db";
-        private readonly IMapper _mapper;
+        protected readonly Mock<IMapper> mapperMock;
         static SliceFixture()
         {
             Config = new ConfigurationBuilder()
                .AddEnvironmentVariables()
                .Build();
+            
         }
 
-        public SliceFixture(IMapper mapper)
+        protected SliceFixture()
         {
-            _mapper = mapper;
             var startup = new Startup(Config);
             var services = new ServiceCollection();
+            mapperMock = new Mock<IMapper>();
 
             DbContextOptionsBuilder builder = new DbContextOptionsBuilder()
                 .UseInMemoryDatabase(DbName)

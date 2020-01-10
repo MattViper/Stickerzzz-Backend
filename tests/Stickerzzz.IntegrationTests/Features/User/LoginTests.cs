@@ -10,11 +10,7 @@ namespace Stickerzzz.IntegrationTests.Features.User
 {
     public class LoginTests : SliceFixture
     {
-        private readonly IMapper _mapper;
-        public LoginTests(IMapper mapper) : base(mapper)
-        {
-            _mapper = mapper;
-        }
+        
         [Fact]
         public async Task Expect_Login()
         {

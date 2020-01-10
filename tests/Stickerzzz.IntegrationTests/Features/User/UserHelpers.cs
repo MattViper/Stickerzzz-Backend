@@ -5,7 +5,7 @@ namespace Stickerzzz.IntegrationTests.Features.User
 {
     public static class UserHelpers
     {
-        public static readonly string DefaultUserName = "username";
+        public static readonly string DefaultUserName = "mattviper";
 
 
 

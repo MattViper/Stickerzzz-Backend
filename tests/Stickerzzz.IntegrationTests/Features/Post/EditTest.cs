@@ -8,11 +8,8 @@ namespace Stickerzzz.IntegrationTests.Features.Post
 {
     public class EditTest : SliceFixture
     {
-        private readonly IMapper _mapper;
-        public EditTest(IMapper mapper) : base(mapper)
-        {
-            _mapper = mapper;
-        }
+        
+
         [Fact]
         public async Task Expect_Edit_Post()
         {
@@ -25,7 +22,7 @@ namespace Stickerzzz.IntegrationTests.Features.Post
                 }
              };
 
-            var createdPost = await PostHelpers.CreatePost(this, createCommand, _mapper);
+            var createdPost = await PostHelpers.CreatePost(this, createCommand, mapperMock);
 
 
             var command = new Edit.Command()
@@ -44,7 +41,7 @@ namespace Stickerzzz.IntegrationTests.Features.Post
 
             var dbContext = GetDbContext();
 
-            var postEditHandler = new Edit.Handler(dbContext, _mapper);
+            var postEditHandler = new Edit.Handler(dbContext, mapperMock.Object);
             var edited = await postEditHandler.Handle(command, new System.Threading.CancellationToken());
 
             Assert.NotNull(edited);

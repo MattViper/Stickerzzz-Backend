@@ -60,12 +60,14 @@ namespace Stickerzzz.Infrastructure.Data
             modelBuilder.Entity<PostStickers>()
                 .HasOne(p => p.Post)
                 .WithMany(s => s.PostStickers)
-                .HasForeignKey(p => p.PostId);
+                .HasForeignKey(p => p.PostId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<PostStickers>()
                 .HasOne(s => s.Sticker)
                 .WithMany(p => p.PostStickers)
                 .HasForeignKey(s => s.StickerId);
+                
 
             modelBuilder.Entity<PostFavorites>()
                 .HasKey(x => new { x.PostId, x.UserId });
