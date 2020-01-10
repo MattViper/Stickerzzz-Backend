@@ -6,7 +6,7 @@ mono: none
 dotnet: 3.1.100
 branches:
  - only:
-   - develop-users
+   - develop-hotfix
 
 install:
   - sudo apt-get install -qq dotnet-sdk-2.0.0
