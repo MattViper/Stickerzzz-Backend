@@ -10,17 +10,18 @@ using Stickerzzz.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using AutoMapper;
 using Moq;
+using Stickerzzz.Web.Posts;
+using Stickerzzz.Web.Users;
 
 namespace Stickerzzz.IntegrationTests
 {
     public class SliceFixture : IDisposable
     {
         static readonly IConfiguration Config;
-        
+        protected readonly Mapper _mapper;
         private readonly IServiceScopeFactory _scopeFactory;
         private readonly ServiceProvider _provider;
         private readonly string DbName = Guid.NewGuid() + ".db";
-        protected readonly Mock<IMapper> mapperMock;
         static SliceFixture()
         {
             Config = new ConfigurationBuilder()
@@ -33,11 +34,19 @@ namespace Stickerzzz.IntegrationTests
         {
             var startup = new Startup(Config);
             var services = new ServiceCollection();
-            mapperMock = new Mock<IMapper>();
+            
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingPost());
+                mc.AddProfile(new MappingProfile());
+            });
+            _mapper = new Mapper(mappingConfig);
 
+            
             DbContextOptionsBuilder builder = new DbContextOptionsBuilder()
                 .UseInMemoryDatabase(DbName)
-                .ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning));
+                .ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning))
+                .EnableSensitiveDataLogging();
             services.AddSingleton(new AppDbContext(builder.Options));
 
             startup.ConfigureServices(services);

@@ -13,6 +13,7 @@ namespace Stickerzzz.IntegrationTests.Features.Post
 {
 	public class CreateTest : SliceFixture
 	{
+        
         //complete test with tags and stickers data
         [Fact]
         public async Task Expect_Create_Post()
@@ -41,7 +42,7 @@ namespace Stickerzzz.IntegrationTests.Features.Post
                 }
 
             };
-            var post = await PostHelpers.CreatePost(this, command, mapperMock);
+            var post = await PostHelpers.CreatePost(this, command, _mapper);
 
             Assert.NotNull(post);
             Assert.Equal(post.Title, command.Post.Title);

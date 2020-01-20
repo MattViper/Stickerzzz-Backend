@@ -23,7 +23,7 @@ namespace Stickerzzz.IntegrationTests.Features.Post
                 }
             };
             
-            var post = await PostHelpers.CreatePost(this, createCmd, mapperMock);
+            var post = await PostHelpers.CreatePost(this, createCmd, _mapper);
             var slug = post.Slug;
 
             var deleteCmd = new Delete.Command(slug);
@@ -51,7 +51,7 @@ namespace Stickerzzz.IntegrationTests.Features.Post
 
                 }
             };
-            var post = await PostHelpers.CreatePost(this, createCmd, mapperMock);
+            var post = await PostHelpers.CreatePost(this, createCmd, _mapper);
 
             //var dbPostWithTags = await ExecuteDbContextAsync(
 

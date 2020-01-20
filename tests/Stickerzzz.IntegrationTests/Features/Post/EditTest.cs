@@ -22,7 +22,7 @@ namespace Stickerzzz.IntegrationTests.Features.Post
                 }
              };
 
-            var createdPost = await PostHelpers.CreatePost(this, createCommand, mapperMock);
+            var createdPost = await PostHelpers.CreatePost(this, createCommand, _mapper);
 
 
             var command = new Edit.Command()
@@ -41,7 +41,7 @@ namespace Stickerzzz.IntegrationTests.Features.Post
 
             var dbContext = GetDbContext();
 
-            var postEditHandler = new Edit.Handler(dbContext, mapperMock.Object);
+            var postEditHandler = new Edit.Handler(dbContext, _mapper);
             var edited = await postEditHandler.Handle(command, new System.Threading.CancellationToken());
 
             Assert.NotNull(edited);
