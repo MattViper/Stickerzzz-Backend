@@ -70,7 +70,7 @@ namespace Stickerzzz.Web.Posts
             public async Task<PostEnvelope> Handle(Command message, CancellationToken cancellationToken)
             {
                 
-                var creator = await _context.Users.FirstAsync(i => i.UserName == "mattviper", cancellationToken);
+                var creator = await _context.Users.FirstAsync(i => i.UserName == _currentUserAccessor.GetCurrentUsername(), cancellationToken);
                 var tags = new List<Tag>();
                 var stickers = new List<Sticker>();
                 
