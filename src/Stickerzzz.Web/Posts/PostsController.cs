@@ -35,7 +35,7 @@ namespace Stickerzzz.Web.Posts
 
 
         [HttpPost]
-        //[Authorize(AuthenticationSchemes = JwtIssuerOptions.Schemes)]
+        [Authorize(AuthenticationSchemes = JwtIssuerOptions.Schemes)]
         public async Task<PostEnvelope> Create([FromBody]Create.Command command)
             => await _mediator.Send(command);
 
@@ -48,7 +48,7 @@ namespace Stickerzzz.Web.Posts
         }
 
         [HttpDelete("{slug}")]
-        //[Authorize(AuthenticationSchemes = JwtIssuerOptions.Schemes)]
+        [Authorize(AuthenticationSchemes = JwtIssuerOptions.Schemes)]
         public async Task Delete(string slug) => await _mediator.Send(new Delete.Command(slug));    
     }
 }
